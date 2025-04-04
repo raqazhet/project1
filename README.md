@@ -76,13 +76,13 @@ Diplom work
 #### Step 1: Clone the Project
 
 ```bash
-git clone git@github.com:raqazhet/sajda_task.git
+git clone https://github.com/raqazhet/project1.git
 ```
 
 #### Step 2: Navigate to the Project Directory
 
 ```bash
-cd sajda_task
+cd project1
 ```
 
 #### Step 3: Create a `.env` File
@@ -196,171 +196,6 @@ For testing purposes, a default user with the following credentials can be used:
 - `sing_in_logic`: Service function that handles the logic for user authentication and returns an authentication token.
 
 
-
-Certainly! Here's the documentation for your Ayah Router:
-
-# Ayah API Documentation in ayah_router.py
-
-## Overview
-
-The `ayah.py` file contains API endpoints related to managing Ayah data, including creation, retrieval, and deletion.
-
-
-### Create Ayah
-
-- **Endpoint**: `/v1/ayah/`
-- **Method**: `POST`
-- **Response Model**: `dict`
-- **Description**: Creates a new Ayah in the system.
-- **Parameters**:
-  - `ayah_data`: The data for the new Ayah in `AyahCreate` model format in the request body.
-  - `current_user`: The current authenticated user obtained through the `get_current_user` dependency.
-  - `service`: The `AyahService` dependency obtained through the `get_ayah_service` function.
-
-- **Example request**:
-```json
-{
-  "surah_title": "sura title",
-  "surah_ayah": "1:12",
-  "arabic_text": "text of arabic",
-  "languages": [
-    {
-      "transcript": "Субханаллах",
-      "translate_text": "Алла тағала кемшіліктен пәк",
-      "lang": "QAZ"
-    }
-  ]
-}
-```
-
-#### Code Explanation
-
-- Validates the user's role, allowing only users with the role "admin" to create Ayahs.
-- `create_ayah`: Service function that handles the logic for creating a new Ayah in the database.
-
-### Get Ayah by ID
-
-- **Endpoint**: `/ayah/{id}`
-- **Method**: `GET`
-- **Response Model**: `dict`
-- **Description**: Retrieves information about a specific Ayah by its ID.
-- **Parameters**:
-  - `id`: The ID of the Ayah to retrieve.
-  - `service`: The `AyahService` dependency obtained through the `get_ayah_service` function.
-
-- **Example Response**:
-```json
-{
-  "result": {
-    "id": "12345",
-    "surah_title": "surah title",
-    "surah_ayah": "1:12",
-    "arabic_text": "text of arabic",
-    "languages": [
-      {
-        "transcript": "Субханаллах",
-        "translate_text": "Алла тағала кемшіліктен пәк",
-        "lang": "QAZ"
-      }
-    ],
-    "created": 1645948800,
-    "updated": 1645948800,
-    "hijri_time": 1645948800
-  }
-}
-```
-
-#### Code Explanation
-
-- Checks the Redis cache for the Ayah data and returns it if found to optimize response time.
-- `get_ayah_by_id`: Service function that fetches the Ayah by its ID.
-
-### Get All Ayahs
-
-- **Endpoint**: `/ayah/`
-- **Method**: `GET`
-- **Response Model**: `Page[AyahSchema]`
-- **Description**: Retrieves a paginated list of all Ayahs in the system.
-- **Parameters**:
-  - `service`: The `AyahService` dependency obtained through the `get_ayah_service` function.
-
-- **Example Response**:
-```json
-{
-  "items": [
-    {
-      "id": "12345",
-      "surah_title": "surah title",
-      "surah_ayah": "1:12",
-      "arabic_text": "text of arabic",
-      "languages": [
-        {
-          "transcript": "Субханаллах",
-          "translate_text": "Алла тағала кемшіліктен пәк",
-          "lang": "QAZ"
-        }
-      ],
-      "created": 1645948800,
-      "updated": 1645948800,
-      "hijri_time": 1645948800
-    }
-  ]
-}
-```
-
-#### Code Explanation
-
-- `get_all_ayahs`: Service function that fetches all Ayahs.
-
-### Delete Ayah by ID
-
-- **Endpoint**: `/ayah/{id}`
-- **Method**: `DELETE`
-- **Response Model**: `dict`
-- **Description**: Deletes a specific Ayah by its ID.
-- **Parameters**:
-  - `id`: The ID of the Ayah to delete.
-  - `current_user`: The current authenticated user obtained through the `get_current_user` dependency.
-  - `service`: The `AyahService` dependency obtained through the `get_ayah_service` function.
-
-- **Example request**:
-```shell
-localhost:7777/ayah/12345
-```
-
-#### Code Explanation
-
-- Validates the user's role, allowing only users with the role "admin" to delete Ayahs.
-- `delete_ayah_by_id`: Service function that deletes the Ayah
-
-
-
-# CRUD operations
-
-Let's document the CRUD operations for the remaining files `hadith.py`, `dhikr.py`, `like.py`, and `user.py`. We'll focus on one API endpoint from each file, similar to the `get_hadith_of_the_day` endpoint:
-
-### Get Hadith of the Day
-
-- **Endpoint**: `/v1/hadith/random/hadith`
-- **Method**: `GET`
-- **Response Model**: `dict`
-- **Description**: Retrieves the Hadith of the day.
-- **Parameters**:
-  - None
-
-- **Example Response**:
-```json
-{
-  "result": "Hadith data of the day"
-}
-```
-#### Code Explanation
-
-- Retrieves the Hadith of the day from the cache (Redis) using the current date.
-- Raises an exception if the Hadith data is not found, indicating a potential Celery Beat error.
-
-
-# Celery Beat Workflow for [Hadith,ayah,dhikr,image] of the Day
 
 ## Overview
 
