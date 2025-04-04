@@ -1,0 +1,215 @@
+[2024-03-06 10:36:58,523: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 10:36:58,536: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 10:36:59,581: INFO/MainProcess] mingle: all alone
+[2024-03-06 10:36:59,668: INFO/MainProcess] celery@7663f201d1c5 ready.
+[2024-03-06 10:39:13,712: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 10:39:13,787: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 10:39:14,867: INFO/MainProcess] mingle: all alone
+[2024-03-06 10:39:14,931: INFO/MainProcess] celery@c4dd7cf7fdca ready.
+[2024-03-06 10:39:19,000: INFO/MainProcess] Events of group {task} enabled by remote.[2024-03-06 12:51:46,392: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 12:51:46,410: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 12:51:47,441: INFO/MainProcess] mingle: all alone
+[2024-03-06 12:51:47,496: INFO/MainProcess] celery@a37f9e9d1e8e ready.
+[2024-03-06 12:51:50,342: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 13:33:28,075: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 13:33:28,100: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 13:33:29,127: INFO/MainProcess] mingle: all alone
+[2024-03-06 13:33:29,174: INFO/MainProcess] celery@65b12986d54b ready.
+[2024-03-06 13:33:32,156: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 13:42:03,335: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 13:42:03,377: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 13:42:04,482: INFO/MainProcess] mingle: all alone
+[2024-03-06 13:42:04,568: INFO/MainProcess] celery@7d545af4bc8a ready.
+[2024-03-06 13:42:08,064: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 15:10:59,204: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 15:10:59,232: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 15:11:00,286: INFO/MainProcess] mingle: all alone
+[2024-03-06 15:11:00,373: INFO/MainProcess] celery@cd75d09a9a60 ready.
+[2024-03-06 15:11:02,826: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 15:37:02,184: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 15:37:02,198: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 15:37:03,235: INFO/MainProcess] mingle: all alone
+[2024-03-06 15:37:03,311: INFO/MainProcess] celery@29cd3106bc63 ready.
+[2024-03-06 15:37:06,236: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 15:40:00,141: INFO/MainProcess] Task tasks.update_daily_quote[9e962386-4413-482a-a886-0a6dedb1f3d6] received
+[2024-03-06 15:40:00,175: ERROR/ForkPoolWorker-1] Task tasks.update_daily_quote[9e962386-4413-482a-a886-0a6dedb1f3d6] raised unexpected: EncodeError(TypeError('Object of type coroutine is not JSON serializable'))
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 41, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 220, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.10/site-packages/kombu/utils/json.py", line 57, in dumps
+    return _dumps(s, cls=cls, **dict(default_kwargs, **kwargs))
+  File "/usr/local/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/site-packages/kombu/utils/json.py", line 45, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type coroutine is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/celery/app/trace.py", line 518, in trace_task
+    task.backend.mark_as_done(
+  File "/usr/local/lib/python3.10/site-packages/celery/backends/base.py", line 162, in mark_as_done
+    self.store_result(task_id, result, state, request=request)
+  File "/usr/local/lib/python3.10/site-packages/celery/backends/base.py", line 528, in store_result
+    self._store_result(task_id, result, state, traceback,
+  File "/usr/local/lib/python3.10/site-packages/celery/backends/base.py", line 962, in _store_result
+    self._set_with_state(self.get_key_for_task(task_id), self.encode(meta), state)
+  File "/usr/local/lib/python3.10/site-packages/celery/backends/base.py", line 418, in encode
+    _, _, payload = self._encode(data)
+  File "/usr/local/lib/python3.10/site-packages/celery/backends/base.py", line 422, in _encode
+    return dumps(data, serializer=self.serializer)
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 219, in dumps
+    with _reraise_errors(EncodeError):
+  File "/usr/local/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 45, in _reraise_errors
+    reraise(wrapper, wrapper(exc), sys.exc_info()[2])
+  File "/usr/local/lib/python3.10/site-packages/kombu/exceptions.py", line 34, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 41, in _reraise_errors
+    yield
+  File "/usr/local/lib/python3.10/site-packages/kombu/serialization.py", line 220, in dumps
+    payload = encoder(data)
+  File "/usr/local/lib/python3.10/site-packages/kombu/utils/json.py", line 57, in dumps
+    return _dumps(s, cls=cls, **dict(default_kwargs, **kwargs))
+  File "/usr/local/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/site-packages/kombu/utils/json.py", line 45, in default
+    return super().default(o)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+kombu.exceptions.EncodeError: Object of type coroutine is not JSON serializable
+[2024-03-06 15:46:13,678: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 15:46:13,725: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 15:46:14,770: INFO/MainProcess] mingle: all alone
+[2024-03-06 15:46:14,819: INFO/MainProcess] celery@e0626ae0d6c0 ready.
+[2024-03-06 15:46:17,819: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 15:49:00,055: INFO/MainProcess] Task tasks.update_daily_quote[bfe1c21d-cb52-434f-8afd-ab766013a784] received
+[2024-03-06 15:49:00,061: WARNING/ForkPoolWorker-1] /src/app/worker.py:46: RuntimeWarning: coroutine 'redis_delete' was never awaited
+  redis_delete(key=key)
+
+[2024-03-06 15:49:00,064: WARNING/ForkPoolWorker-1] /src/app/worker.py:48: RuntimeWarning: coroutine 'get_and_save_daily_quote' was never awaited
+  get_and_save_daily_quote(collection)
+
+[2024-03-06 15:49:00,074: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[bfe1c21d-cb52-434f-8afd-ab766013a784] succeeded in 0.01315186200372409s: None
+[2024-03-06 15:59:12,103: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 15:59:12,130: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 15:59:13,323: INFO/MainProcess] mingle: all alone
+[2024-03-06 15:59:13,414: INFO/MainProcess] celery@783fec5db7de ready.
+[2024-03-06 15:59:17,091: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:02:00,132: INFO/MainProcess] Task tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97] received
+[2024-03-06 16:02:00,142: WARNING/ForkPoolWorker-1] /src/app/redis.py:38: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.delete(key)
+
+[2024-03-06 16:02:00,151: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97]: Error updating daily quote for ayah: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:02:00,155: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97]: Error updating daily quote for hadith: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:02:00,160: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97]: Error updating daily quote for dhikr: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:02:00,168: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97]: Error updating daily quote for file: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:02:00,188: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[2717b398-66bf-4c48-91c1-52f6100a0c97] succeeded in 0.04950658800225938s: None
+[2024-03-06 16:04:06,120: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 16:04:06,153: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 16:04:07,217: INFO/MainProcess] mingle: all alone
+[2024-03-06 16:04:07,304: INFO/MainProcess] celery@5dde3c47beaf ready.
+[2024-03-06 16:04:09,841: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:07:00,163: INFO/MainProcess] Task tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c] received
+[2024-03-06 16:07:00,180: WARNING/ForkPoolWorker-1] /src/app/redis.py:38: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.delete(key)
+
+[2024-03-06 16:07:00,194: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c]: Error updating daily quote for ayah: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:07:00,199: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c]: Error updating daily quote for hadith: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:07:00,207: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c]: Error updating daily quote for dhikr: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:07:00,217: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c]: Error updating daily quote for file: '_asyncio.Future' object is not subscriptable
+[2024-03-06 16:07:00,245: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[8cfd8bb9-bcd2-463c-9edf-266d9a0edf2c] succeeded in 0.06874764399981359s: None
+[2024-03-06 16:13:37,700: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 16:13:37,713: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 16:13:38,744: INFO/MainProcess] mingle: all alone
+[2024-03-06 16:13:38,812: INFO/MainProcess] celery@0129bd342110 ready.
+[2024-03-06 16:13:41,958: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:16:00,159: INFO/MainProcess] Task tasks.update_daily_quote[0ecfed18-2094-46e3-a5a5-38c0ce05022e] received
+[2024-03-06 16:16:00,188: ERROR/ForkPoolWorker-1] Task tasks.update_daily_quote[0ecfed18-2094-46e3-a5a5-38c0ce05022e] raised unexpected: AttributeError("'function' object has no attribute 'delay'")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/celery/app/trace.py", line 451, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/celery/app/trace.py", line 734, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/src/app/worker.py", line 50, in update_daily_quote
+    loop.run_until_complete(redis_delete_for_celery.delay(key=key))
+AttributeError: 'function' object has no attribute 'delay'
+[2024-03-06 16:19:00,185: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 16:19:00,204: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 16:19:01,236: INFO/MainProcess] mingle: all alone
+[2024-03-06 16:19:01,306: INFO/MainProcess] celery@91d7e1c6130e ready.
+[2024-03-06 16:19:04,749: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:21:00,122: INFO/MainProcess] Task tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f] received
+[2024-03-06 16:21:00,134: WARNING/ForkPoolWorker-1] /src/app/redis.py:38: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.delete(key)
+
+[2024-03-06 16:21:00,225: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f]: Error updating daily quote for ayah: Object of type ObjectId is not JSON serializable
+[2024-03-06 16:21:00,234: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f]: Error updating daily quote for hadith: Object of type ObjectId is not JSON serializable
+[2024-03-06 16:21:00,242: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f]: Error updating daily quote for dhikr: Object of type ObjectId is not JSON serializable
+[2024-03-06 16:21:00,250: ERROR/ForkPoolWorker-1] tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f]: Error updating daily quote for file: Object of type ObjectId is not JSON serializable
+[2024-03-06 16:21:00,259: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[ec41a535-4aa1-42d2-b38d-6c323f7f6b8f] succeeded in 0.1297920549986884s: None
+[2024-03-06 16:27:52,500: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 16:27:52,531: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 16:27:53,600: INFO/MainProcess] mingle: all alone
+[2024-03-06 16:27:53,672: INFO/MainProcess] celery@2fe595ef0801 ready.
+[2024-03-06 16:27:56,649: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:30:00,158: INFO/MainProcess] Task tasks.update_daily_quote[d750dc0d-e549-458e-970d-94cfdedc9c00] received
+[2024-03-06 16:30:00,175: WARNING/ForkPoolWorker-1] /src/app/redis.py:38: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.delete(key)
+
+[2024-03-06 16:30:00,253: WARNING/ForkPoolWorker-1] /src/app/redis.py:30: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.set(key, json.dumps(val))
+
+[2024-03-06 16:30:00,254: WARNING/ForkPoolWorker-1] /src/app/redis.py:32: RuntimeWarning: coroutine 'Redis.execute_command' was never awaited
+  redis_db.expire(key, ttl)
+
+[2024-03-06 16:30:00,284: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[d750dc0d-e549-458e-970d-94cfdedc9c00] succeeded in 0.11202179300016724s: None
+[2024-03-06 16:44:48,604: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 16:44:48,623: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 16:44:49,655: INFO/MainProcess] mingle: all alone
+[2024-03-06 16:44:49,738: INFO/MainProcess] celery@8c39351d6ea3 ready.
+[2024-03-06 16:44:53,290: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 16:47:00,165: INFO/MainProcess] Task tasks.update_daily_quote[d1b2cf55-2b9a-4f97-be6c-b7382a9eac67] received
+[2024-03-06 16:47:00,328: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[d1b2cf55-2b9a-4f97-be6c-b7382a9eac67] succeeded in 0.15437443100381643s: None
+[2024-03-06 17:12:43,073: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 17:12:43,111: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 17:12:44,155: INFO/MainProcess] mingle: all alone
+[2024-03-06 17:12:44,221: INFO/MainProcess] celery@576a04b03235 ready.
+[2024-03-06 17:12:48,041: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 17:15:00,123: INFO/MainProcess] Task tasks.update_daily_quote[39018348-3d2f-4073-bd12-d0612c08490a] received
+[2024-03-06 17:15:00,294: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[39018348-3d2f-4073-bd12-d0612c08490a] succeeded in 0.16073897699970985s: None
+[2024-03-06 17:23:24,500: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 17:23:24,545: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 17:23:25,577: INFO/MainProcess] mingle: all alone
+[2024-03-06 17:23:25,634: INFO/MainProcess] celery@27fe324107b6 ready.
+[2024-03-06 17:23:29,193: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 17:26:00,164: INFO/MainProcess] Task tasks.update_daily_quote[c9b6372e-c827-414d-906e-630945571723] received
+[2024-03-06 17:26:00,316: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[c9b6372e-c827-414d-906e-630945571723] succeeded in 0.1449609440023778s: None
+[2024-03-06 18:57:18,182: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 18:57:18,218: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 18:57:19,338: INFO/MainProcess] mingle: all alone
+[2024-03-06 18:57:19,423: INFO/MainProcess] celery@00815a20ac35 ready.
+[2024-03-06 18:57:21,755: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 19:00:00,167: INFO/MainProcess] Task tasks.update_daily_quote[b93df0ed-95c6-42a9-a7d6-535b1547c92f] received
+[2024-03-06 19:00:00,362: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[b93df0ed-95c6-42a9-a7d6-535b1547c92f] succeeded in 0.18564474200002223s: None
+[2024-03-06 19:16:36,804: INFO/MainProcess] Connected to redis://:**@app_redis:6379/0
+[2024-03-06 19:16:36,818: INFO/MainProcess] mingle: searching for neighbors
+[2024-03-06 19:16:37,852: INFO/MainProcess] mingle: all alone
+[2024-03-06 19:16:37,930: INFO/MainProcess] celery@00815a20ac35 ready.
+[2024-03-06 19:16:41,964: INFO/MainProcess] Events of group {task} enabled by remote.
+[2024-03-06 19:19:00,166: INFO/MainProcess] Task tasks.update_daily_quote[67179fe7-bded-4f09-b63c-cdb4119d4227] received
+[2024-03-06 19:19:00,358: INFO/ForkPoolWorker-1] Task tasks.update_daily_quote[67179fe7-bded-4f09-b63c-cdb4119d4227] succeeded in 0.1835972160001802s: None

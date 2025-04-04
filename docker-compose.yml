@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  fast_api:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 7777:7777
+    depends_on:
+      - mongodb_container
+      - app_redis
+    volumes:
+      - ./src:/src/app
+      - data:/src/data
+    networks:
+      - app_network
+
+  mongodb_container:
+    env_file:
+      - .env
+    image: mongo:4.4
+    ports:
+      - "27016:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${MONGO_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${MONGO_PASSWORD}"
+    volumes:
+      - data:/data/db
+    restart: always
+    networks:
+      - app_network
+
+  app_redis:
+    image: redis:6.2-alpine
+    container_name: app_redis
+    command:
+      - 'redis-server'
+      - '--requirepass ${REDIS_PASSWORD}'
+    ports:
+      - 6379:6379
+    volumes:
+      - data:/redis/db
+    networks:
+      - app_network
+
+  simple_worker:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - fast_api
+    volumes:
+      - ./src:/src/app
+      - ./logs:/src/logs
+    command: ["/src/app/script/celery.sh","celery"]
+    networks:
+      - app_network
+
+  celery_beat:
+    env_file:
+      - .env
+    build: .
+    depends_on:
+      - fast_api
+      - mongodb_container
+    command: ["/src/app/script/celery.sh","beat"]
+    networks:
+      - app_network
+
+  flower:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - fast_api
+      - simple_worker
+    volumes:
+      - ./src:/src/app
+    command: ["/src/app/script/celery.sh","flower"]
+    ports:
+      - 5555:5555
+    networks:
+      - app_network
+
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  data:
+    name: data
+

@@ -1,0 +1,31 @@
+fastapi~=0.101.1
+uvicorn
+motor~=3.1.2
+passlib~=1.7.4
+python-jose[cryptography]
+pydantic~=2.2.1
+bcrypt
+python-multipart
+pydantic[email]
+python-dotenv
+puremagic
+PyJWT
+# psutil
+libmagic
+python-magic
+pymongo
+Pillow==9.0.1
+redis
+aioredis
+fastapi-pagination
+fastapi_mail
+websockets
+celery==5.2.7
+flower
+hijri_converter
+# python-decouple
+apscheduler
+httpx
+pytest-asyncio
+testcontainers-mongodb
+boto3
